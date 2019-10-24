@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PlanningPoker</string>
+    <string name="app_title">Planning Poker</string>
+    <string name="button_go">Log In</string>
+    <string name="welcome">Welcome to our game!</string>
+    <string name="name">Name</string>
+    <string name="code">Your access code</string>
+    <string name="button_upload">Upload an image about you</string>
 </resources>
