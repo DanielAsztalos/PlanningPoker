@@ -6,4 +6,10 @@
     <string name="name">Name</string>
     <string name="code">Your access code</string>
     <string name="button_upload">Upload an image about you</string>
+    <string name="send_button">Send</string>
+    <string name="first_question">Elso kerdes teszt</string>
+    <string name="second_question">Masodik kerdes teszt</string>
+    <string name="third_question">Harmadik kerdes teszt</string>
+    
+    
 </resources>
