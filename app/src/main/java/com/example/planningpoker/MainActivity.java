@@ -8,6 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.planningpoker.model.Question;
+import com.example.planningpoker.model.Session;
+import com.example.planningpoker.model.User;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -26,7 +32,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        initializeSession();
 
+    }
 
+    public void initializeSession() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        Session session = new Session();
+
+        session.setKey(123456);
+
+        Question q = new Question();
+        q.setContent("Adatbázis megtervezése");
+
+        User u1 = new User("Teszt1");
+        User u2 = new User("Teszt2");
+        User u3 = new User("Teszt3");
+
+        session.addUser(u1);
+        session.addUser(u2);
+        session.addUser(u3);
+
+        session.addQuestion(q);
+
+        db.collection("sessions").document(String.valueOf(123456)).set(session);
     }
 }

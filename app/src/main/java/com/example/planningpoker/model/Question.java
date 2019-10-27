@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Question {
     private String content;
-    private ArrayList<Answer> answers;
+    private ArrayList<Answer> answers = new ArrayList<>();
 
     public Question() {
     }
