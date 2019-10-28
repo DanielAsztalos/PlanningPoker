@@ -68,6 +68,7 @@ public class Login extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Intent intent = new Intent(Login.this,Questions.class);
+                            intent.putExtra("session_id", et_code.getText().toString());
                             startActivity(intent);
                         }
                     }

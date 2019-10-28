@@ -31,7 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Item is clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "Item is clicked" , Toast.LENGTH_SHORT).show();
             }
         });
         return viewHolder;

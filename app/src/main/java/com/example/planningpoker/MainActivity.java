@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
 
         Question q = new Question();
         q.setContent("Adatbázis megtervezése");
+        Question q2 = new Question();
+        q2.setContent("UI tervezés");
+        Question q3 = new Question();
+        q3.setContent("Home Activity implementálása");
 
         User u1 = new User("Teszt1");
         User u2 = new User("Teszt2");
@@ -55,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         session.addUser(u3);
 
         session.addQuestion(q);
+        session.addQuestion(q2);
+        session.addQuestion(q3);
 
         db.collection("sessions").document(String.valueOf(123456)).set(session);
     }
