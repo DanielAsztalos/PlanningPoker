@@ -126,6 +126,10 @@ public class Questions extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(Questions.this, "Saved successfully!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(), ActivityResult.class);
+                            intent.putExtra("session_id", sess_id);
+                            intent.putExtra("user_name", user.getName());
+                            startActivity(intent);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
