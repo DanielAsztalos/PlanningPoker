@@ -1,6 +1,8 @@
 package com.example.planningpoker.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String name;
     private Role role;
     private String pic_id;

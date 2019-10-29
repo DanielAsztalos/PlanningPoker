@@ -10,6 +10,7 @@
     <string name="first_question">Elso kerdes teszt</string>
     <string name="second_question">Masodik kerdes teszt</string>
     <string name="third_question">Harmadik kerdes teszt</string>
+    <string name="shared_key">com.example.planningpoker.ANSWERS</string>
     
     
 </resources>

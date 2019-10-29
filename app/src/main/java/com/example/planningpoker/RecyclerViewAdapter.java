@@ -1,6 +1,9 @@
 package com.example.planningpoker;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +17,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private String[] mData;
     private LayoutInflater mInflater;
+    private Context context;
 
 
     RecyclerViewAdapter(Context context, String[] data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
+        this.context = context;
     }
 
     @NonNull
@@ -31,7 +36,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Item is clicked" , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(v.getContext(), "Item is clicked" , Toast.LENGTH_SHORT).show();
+//                SharedPreferences sharedPrefs = context.getPre
+//                SharedPreferences.Editor editor = sharedPrefs.edit();
+//                editor.putString("ANSWER", ((TextView) v).getText().toString());
+//                editor.commit();
             }
         });
         return viewHolder;
@@ -53,6 +62,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public ViewHolder(View view) {
             super(view);
             card = view.findViewById(R.id.card);
+            card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Toast.makeText(v.getContext(), "szoveg" + ((TextView)v).getText().toString(), Toast.LENGTH_LONG).show();
+                    ((TextView)v).setBackgroundColor(v.getContext().getResources().getColor(R.color.colorAccent));
+                    ((TextView)v).setTextColor(v.getContext().getResources().getColor(R.color.white));
+
+                    SharedPreferences sharedPreferences = v.getContext().getSharedPreferences(v.getContext().getResources().getString(R.string.shared_key),
+                            Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("ANSWER", ((TextView)v).getText().toString());
+                    editor.commit();
+                }
+            });
 
         }
 

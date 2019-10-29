@@ -15,7 +15,6 @@ import com.example.planningpoker.model.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApiNotAvailableException;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Login extends AppCompatActivity {
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +42,6 @@ public class Login extends AppCompatActivity {
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(Login.this,Questions.class);
-//
-//
-//
-//                startActivity(intent);
             final DocumentReference reff = db.collection("sessions").document(et_code.getText().toString());
 
             db.runTransaction(new Transaction.Function<Void>() {
@@ -58,7 +53,7 @@ public class Login extends AppCompatActivity {
                     }
                     Session sess = snapshot.toObject(Session.class);
                     ArrayList<User> users = sess.getUsers();
-                    User user = new User(et_name.getText().toString());
+                    user = new User(et_name.getText().toString());
                     users.add(user);
                     transaction.update(reff, "users", users);
                     return null;
@@ -69,6 +64,7 @@ public class Login extends AppCompatActivity {
                         public void onSuccess(Void aVoid) {
                             Intent intent = new Intent(Login.this,Questions.class);
                             intent.putExtra("session_id", et_code.getText().toString());
+                            intent.putExtra("user", user);
                             startActivity(intent);
                         }
                     }

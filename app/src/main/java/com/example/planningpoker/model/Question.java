@@ -24,4 +24,6 @@ public class Question {
     public void setAnswers(ArrayList<Answer> answers) {
         this.answers = answers;
     }
+
+    public void addAnswer(Answer a) { this.answers.add(a); }
 }
