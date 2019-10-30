@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.planningpoker.model.Answer;
 import com.example.planningpoker.model.Question;
@@ -32,13 +34,14 @@ public class ActivityResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        nameView = findViewById(R.id.username);
-        answerView = findViewById(R.id.answer);
+        final RecyclerView rv_result = findViewById(R.id.recyclerview);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(ActivityResult.this, 2);
+        rv_result.setLayoutManager(gridLayoutManager);
 
         Intent intent = getIntent();
         final String sess_id = intent.getStringExtra("session_id");
         final String name = intent.getStringExtra("user_name");
-        nameView.setText(name);
+
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         final DocumentReference reff = db.collection("sessions").document(sess_id);
@@ -50,11 +53,8 @@ public class ActivityResult extends AppCompatActivity {
                 ArrayList<Question> questions = sess.getQuestions();
                 Question question = questions.get(0);
 
-                for (Answer answer : question.getAnswers()) {
-                    if (answer.getUser().getName().equals(name)) {
-                        answerView.setText(answer.getContent());
-                    }
-                }
+                ResultAdapter adapter = new ResultAdapter(ActivityResult.this, question.getAnswers());
+                rv_result.setAdapter(adapter);
             }
         });
     }

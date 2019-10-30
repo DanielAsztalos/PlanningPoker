@@ -6,27 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ActivityResult">
 
-
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:id="@+id/username"
-        android:layout_marginTop="60dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-    />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/answer"
-        android:textSize="20sp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_below="@+id/username"
-
-        />
+        android:layout_height="match_parent" />
 </RelativeLayout>
